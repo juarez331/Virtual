@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtual Store</title>
+    
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0b0b0b;
+    color:white;
+}
+
+header{
+    text-align:center;
+    padding:30px;
+    background:#000;
+}
+
+    
+.cerrar-menu{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:20px;
+    cursor:pointer;
+    color:#00ffae;
+}
+    
+.menu-btn{
+    position:fixed;
+    left:20px;
+    top:15px;
+    font-size:20px;
+    cursor:pointer;
+    color:#00ffae;
+    z-index:1100;
+}
+
+.aviso-local{
+    background:#00ffae;
+    color:black;
+    padding:10px;
+    margin-top:15px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+header img{
+    width:180px;
+}
+
+h1{
+    margin-top:10px;
+}
+
+.productos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    padding:30px;
+}
+
+.categoria{
+    grid-column:1/-1;
+    margin-top:20px;
+    margin-bottom:5px;
+    font-size:24px;
+    color:#00ffae;
+    text-align:center;
+}
+
+.card{
+    background:#111;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 0 15px rgba(0,0,0,0.6);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.03);
+}
+
+.card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.imagen-principal{
+    width:100%;
+    height:250px;
+}
+
+.miniaturas img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    cursor:pointer;
+    border-radius:6px;
+}
+
+    
+.miniaturas{
+    display:flex;
+    gap:8px;
+    padding:10px;
+    justify-content:center;
+}
+
+.info{
+    padding:15px;
+}
+
+.precio{
+    color:#00ffae;
+    font-size:22px;
+    margin:10px 0;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#00ffae;
+    color:black;
+    font-weight:bold;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#00cc8a;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+}
+
+.menu-lateral{
+    position:fixed;
+    top:0;
+    left:-250px;
+    width:250px;
+    height:100%;
+    background:#000;
+    padding-top:80px;
+    transition:0.3s;
+    z-index:1000;
+}
+
+.menu-lateral a{
+    display:block;
+    padding:15px;
+    color:white;
+    text-decoration:none;
+    border-bottom:1px solid #222;
+    font-family:'Poppins', sans-serif;
+    font-weight:500;
+letter-spacing:0.5px;
+}
+
+.menu-lateral a:hover{
+    background:#111;
+}
+    
+</style>
+</head>
+
+<body>
+
+<header>
+    
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+    
+<img src="logo.png">
+<h1></h1>
+<p>Elegís, comprás y lo enviamos a tu domicilio.</p>
+    
+<div class="aviso-local">
+📍 Ventas únicamente en Resistencia y alrededores
+</div>
+</header>
+    
+<div id="menu" class="menu-lateral">
+
+<div class="cerrar-menu" onclick="toggleMenu()">✕</div>
+
+<a href="#auriculares" onclick="toggleMenu()">Auriculares</a>
+<a href="#accesorios" onclick="toggleMenu()">Accesorios</a>
+<a href="#memorias" onclick="toggleMenu()">Memorias</a>
+<a href="#parlantes" onclick="toggleMenu()">Parlantes</a>
+
+</div>
+    
+<section class="productos">
+    
+<!-- ========================= -->
+<!-- 🎧🎧🎧 AURICULARES 🎧🎧🎧 -->
+<!-- ========================= -->
+
+<h2 id="auriculares" class="categoria">🎧 Auriculares</h2>
+  <!-- ===== PRODUCTO: AURICULARES BLUETOOTH ===== -->
+<div class="card">
+
+<img id="imagenPrincipal" class="imagen-principal" src="auriculares.png">
+
+<div class="miniaturas">
+    <img src="auriculares.png" onclick="cambiarImagen(this)">
+    <img src="auriculares2.png" onclick="cambiarImagen(this)">
+    <img src="auriculares3.png" onclick="cambiarImagen(this)">
+</div>
+
+<div class="info">
+<h3>Auriculares Bluetooth</h3>
+<p>Sonido estéreo, batería 6hs. ideales para hacer ejercicios, muy cómodos.</p>
+<div class="precio">$11.000</div>
+<button onclick="window.location.href='https://mpago.la/2LNnm41'">
+Comprar
+</button>
+</div>
+</div>
+  <!-- ===== PRODUCTO: INPODS 12 ===== -->  
+
+<div class="card">
+
+<img id="imagenInpods" class="imagen-principal" src="inpods12.png">
+
+<div class="miniaturas">
+    <img src="inpods12.png" onclick="cambiarImagen(this)">
+    <img src="inpods12_2.png" onclick="cambiarImagen(this)">
+    <img src="inpods12_3.png" onclick="cambiarImagen(this)">
+</div>
+
+<div class="info">
+<h3>Auriculares Bluetooth inPods 12</h3>
+<p>Conexión rápida, estuche de carga portátil.</p>
+<div class="precio">$12.000</div>
+<button onclick="window.location.href='https://mpago.la/1BMif8G'">
+Comprar
+</button>
+</div>
+
+</div>
+    
+<div class="card">
+
+<img id="imagenInpodsrosado" class="imagen-principal" src="inpods12_rosado.png">
+
+<div class="miniaturas">
+    <img src="inpods12_rosado.png" onclick="cambiarImagen(this)">
+    <img src="inpods12_rosado2.png" onclick="cambiarImagen(this)">
+    <img src="inpods12_rosado3.png" onclick="cambiarImagen(this)">
+</div>
+
+<div class="info">
+<h3>Auriculares Bluetooth inPods 12 - Rosado</h3>
+<p>Conexión rápida, estuche de carga portátil.</p>
+<div class="precio">$12.000</div>
+<button onclick="window.location.href='https://mpago.la/1GnVcHp'">
+Comprar
+</button>
+</div>
+
+</div>
+    
+<!-- ========================= -->
+<!-- 💻💻💻 ACCESORIOS 💻💻💻 -->
+<!-- ========================= -->
+    
+<h2 id="accesorios" class="categoria">💻 Accesorios</h2>
+  <!-- ===== PRODUCTO: MOUSE INALÁMBRICO ===== -->
+    
+<div class="card">
+<img class="imagen-principal" src="mouse.png">
+    
+<div class="miniaturas">
+    <img src="mouse.png" onclick="cambiarImagen(this)">
+    <img src="mouse2.png" onclick="cambiarImagen(this)">
+    <img src="mouse3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Mouse inalámbrico ergonómico, ideal si pasas muchas horas en la computadora, a pilas, con corta corriente.</h3>
+<p class="precio">$25.000</p>
+
+<button onclick="window.location.href='https://mpago.la/2QpPoof'">
+Comprar
+</button>
+</div>
+</div>
+    
+ <!-- ===== PRODUCTO: CAPOTRASTE GUITARRA ===== -->
+    
+<div class="card">
+<img class="imagen-principal" src="capotraste.png">
+    
+<div class="miniaturas">
+    <img src="capotraste.png" onclick="cambiarImagen(this)">
+    <img src="capotraste2.png" onclick="cambiarImagen(this)">
+    <img src="capotraste3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Capotraste para guitarra + Púa de regalo</h3>
+<p class="precio">$15.000</p>
+
+<button onclick="window.location.href='https://mpago.la/1XPB5i2'">
+Comprar
+</button>
+</div>
+</div>
+    
+ <!-- ===== PRODUCTO: SOPORTE GUITARRA PARED ===== -->
+    
+<div class="card">
+<img class="imagen-principal" src="soporte_guitarra.png">
+    
+<div class="miniaturas">
+    <img src="soporte_guitarra.png" onclick="cambiarImagen(this)">
+    <img src="soporte_guitarra2.png" onclick="cambiarImagen(this)">
+    <img src="soporte_guitarra3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Soporte de guitarra para pared</h3>
+<p>Soporte firme y seguro para colgar tu guitarra en la pared. Ahorra espacio y protege el instrumento.</p>
+<div class="precio">$18.000</div>
+<button onclick="window.location.href='https://mpago.la/1YKhe58'">
+Comprar
+</button>
+</div>
+</div>
+
+  <!-- ===== PRODUCTO: TRIPODE FLEXIBLE ONLY ===== -->
+    
+<div class="card">
+<img class="imagen-principal" src="tripode_only.png">
+<div class="miniaturas">
+    <img src="tripode_only.png" onclick="cambiarImagen(this)">
+    <img src="tripode_only2.png" onclick="cambiarImagen(this)">
+    <img src="tripode_only3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Trípode flexible universal ONLY</h3>
+<p>Compatible con celulares y cámaras. Patas flexibles antideslizantes ideales para fotos y videos.</p>
+<div class="precio">$8.000</div>
+<button onclick="window.location.href='https://mpago.la/1c8Sff8'">Comprar</button>
+</div>
+</div>
+    
+<div class="card">
+<img class="imagen-principal" src="hdmi.png">
+<div class="miniaturas">
+    <img src="hdmi.png" onclick="cambiarImagen(this)">
+    <img src="hdmi2.png" onclick="cambiarImagen(this)">
+    <img src="hdmi3.png" onclick="cambiarImagen(this)">
+</div>
+    
+<div class="info">
+<h3>Cable HDMI Mallado 1,5 mts</h3>
+<p>Alta calidad, conexión estable para TV, PC y consolas.</p>
+<div class="precio">$8.000</div>
+<button onclick="window.location.href='https://mpago.la/27uAWLk'">Comprar</button>
+</div>
+</div>
+    
+  <!-- ===== PRODUCTO: MEMORIA 64GB ===== -->
+    
+<h2 id="memorias" class="categoria">💾 Memorias</h2>   
+<div class="card">
+<img class="imagen-principal" src="hub.png">
+<div class="miniaturas">
+    <img src="hub.png" onclick="cambiarImagen(this)">
+    <img src="hub2.png" onclick="cambiarImagen(this)">
+    <img src="hub3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Hub USB-C 8 en 2</h3>
+<p>Expansor multipuerto HDMI, USB y lector SD.</p>
+<div class="precio">$26.000</div>
+<button onclick="window.location.href='https://mpago.la/1S3dsec'">Comprar</button>
+</div>
+</div>
+      
+<div class="card">
+<img class="imagen-principal" src="memoria64.png">
+<div class="miniaturas">
+    <img src="memoria64.png" onclick="cambiarImagen(this)">
+    <img src="memoria64_2.png" onclick="cambiarImagen(this)">
+    <img src="memoria64_3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Tarjeta de Memoria 64GB HIGH SPEED TF</h3>
+<p>Alta velocidad ideal para celulares y cámaras.</p>
+<div class="precio">$18.000</div>
+<button onclick="window.location.href='https://mpago.la/27o28JZ'">Comprar</button>
+</div>
+</div>
+    
+  <!-- ===== PRODUCTO: VGA A HDMI ===== -->
+    
+<div class="card">
+<img class="imagen-principal" src="vga_hdmi.png">
+<div class="miniaturas">
+    <img src="vga_hdmi.png" onclick="cambiarImagen(this)">
+    <img src="vga_hdmi2.png" onclick="cambiarImagen(this)">
+    <img src="vga_hdmi3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Convertidor VGA a HDMI Full HD 1080p</h3>
+<p>Incluye entrada de audio para mejor calidad de sonido.</p>
+<div class="precio">$12.000</div>
+<button onclick="window.location.href='https://mpago.la/2XzPHBB'">Comprar</button>
+</div>
+</div>
+    
+<section id="parlantes">
+    
+ <!-- ===== PRODUCTO: PARLANTE BLUETOOTH ===== -->
+<h2 id="parlantes" class="categoria">🔊 Parlantes</h2>
+
+<div class="card">
+
+<img class="imagen-principal" src="parlante.png">
+
+<div class="miniaturas">
+    <img src="parlante.png" onclick="cambiarImagen(this)">
+    <img src="parlante2.png" onclick="cambiarImagen(this)">
+    <img src="parlante3.png" onclick="cambiarImagen(this)">
+</div>
+
+<div class="info">
+<h3>Parlante Bluetooth</h3>
+<p>Incluye porta celular.</p>
+<div class="precio">$18.000</div>
+<button onclick="window.location.href='https://mpago.la/1EFMsDz'">Comprar</button>
+</div>
+
+</div>
+    
+<div class="card">
+<img class="imagen-principal" src="luo3262.png">
+<div class="miniaturas">
+    <img src="luo3262.png" onclick="cambiarImagen(this)">
+    <img src="luo3262_2.png" onclick="cambiarImagen(this)">
+    <img src="luo3262_3.png" onclick="cambiarImagen(this)">
+</div>
+<div class="info">
+<h3>Parlante Bluetooth LUO LU-3262</h3>
+<p>Sonido potente, luces LED y batería recargable.</p>
+<div class="precio">$28.000</div>
+<button onclick="window.location.href='https://mpago.la/2SXPD97'">Comprar</button>
+</div>
+</div>
+
+<!-- PRODUCTOS PARLANTES VAN ACÁ -->
+
+</section>
+
+</section>
+
+<footer>
+© 2026 Virtual Store
+</footer>
+
+<script>
+
+function toggleMenu(){
+    const menu = document.getElementById("menu");
+
+    if(menu.style.left === "0px"){
+        menu.style.left = "-250px";
+    }else{
+        menu.style.left = "0px";
+    }
+}
+
+function comprar(){
+    window.location.href="https://mpago.la/ejemplo";
+}
+
+function cambiarImagen(imgMiniatura){
+    const card = imgMiniatura.closest(".card");
+    const imagenPrincipal = card.querySelector(".imagen-principal");
+    imagenPrincipal.src = imgMiniatura.src;
+}
+
+</script>
+
+</body>
+</html>
